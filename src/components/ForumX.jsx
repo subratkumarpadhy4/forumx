@@ -35,7 +35,7 @@ const ForumX = () => {
         {/* Header / Navigation */}
         <header className="header">
           <div className="header-left">
-            <img src="/logo.png" alt="ForumX" className="header-logo" />
+            <img src="/logo.ico" alt="ForumX" className="header-logo" />
           </div>
           <div className="header-right">
             <button className="icon-button" onClick={() => alert('Help documentation coming soon!')}>
