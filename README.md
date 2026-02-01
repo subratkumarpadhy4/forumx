@@ -68,11 +68,13 @@ AI was used for:
 
 ## 7. Source Code
 All source code is available in the /src folder.
+
 ## 8. Final Output
 Screenshots and demo details are available in /docs/final-output.md.
+
 ## 9. Build Reproducibility Instructions (Mandatory)
 To reproduce this project locally,
-follow build.md.
+follow reproducibility/build.md
 
 
 
