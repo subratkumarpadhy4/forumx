@@ -105,8 +105,8 @@
 }
 
 .auth-logo {
-  height: 60px;
-  width: auto;
+  width: 150px;
+  height: auto;
   object-fit: contain;
   margin-bottom: 1rem;
   display: block;

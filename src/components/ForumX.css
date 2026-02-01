@@ -28,7 +28,7 @@
   pointer-events: none;
   z-index: 0;
   background: radial-gradient(circle at 20% 20%, rgba(55, 19, 236, 0.15) 0%, transparent 40%),
-              radial-gradient(circle at 80% 80%, rgba(55, 19, 236, 0.1) 0%, transparent 40%);
+    radial-gradient(circle at 80% 80%, rgba(55, 19, 236, 0.1) 0%, transparent 40%);
 }
 
 /* Layout Container */
@@ -144,7 +144,7 @@
   .action-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .hero-title {
     font-size: 3.75rem;
   }
@@ -353,6 +353,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -394,10 +395,11 @@
   font-weight: 400;
   letter-spacing: 0.05em;
 }
+
 /* Header Logo */
 .header-logo {
-  height: 40px;
-  width: auto;
+  width: 100px;
+  height: auto;
   object-fit: contain;
 }
 
