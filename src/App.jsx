@@ -5,16 +5,16 @@ import RoundTable from './components/RoundTable.jsx';
 import PreJoin from './components/PreJoin.jsx';
 import Supervisor from './components/Supervisor.jsx';
 import Auth from './components/Auth.jsx';
-import ProtectedRoute from './components/Protectedroute.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function App() {
   const currentUser = localStorage.getItem("currentUser");
 
   return (
     <Routes>
-      <Route 
-        path="/auth" 
-        element={currentUser ? <Navigate to="/" replace /> : <Auth />} 
+      <Route
+        path="/auth"
+        element={currentUser ? <Navigate to="/" replace /> : <Auth />}
       />
 
       <Route
@@ -55,9 +55,9 @@ function App() {
         }
       />
 
-      <Route 
-        path="*" 
-        element={<Navigate to={currentUser ? "/" : "/auth"} replace />} 
+      <Route
+        path="*"
+        element={<Navigate to={currentUser ? "/" : "/auth"} replace />}
       />
     </Routes>
   );
