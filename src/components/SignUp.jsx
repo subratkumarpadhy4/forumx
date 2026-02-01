@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 
-function SignUp({ switchPage }) {
+function Signup({ switchPage }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +35,8 @@ function SignUp({ switchPage }) {
   return (
     <div className="container">
       <div className="auth-box">
-        <h2>Sign up</h2>
+        <h2>ForumX</h2>
+        <p className="auth-subtitle">Create your account to get started</p>
 
         <form onSubmit={handleSubmit}>
           <input
@@ -73,4 +74,4 @@ function SignUp({ switchPage }) {
   );
 }
 
-export default SignUp;
+export default Signup;

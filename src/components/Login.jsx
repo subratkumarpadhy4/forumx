@@ -31,7 +31,8 @@ function Login({ switchPage }) {
   return (
     <div className="container">
       <div className="auth-box">
-        <h2>Log in</h2>
+        <img src="logo.png" alt="ForumX" className="auth-logo" />
+        <p className="auth-subtitle">Welcome back! Sign in to continue</p>
 
         <form onSubmit={handleSubmit}>
           <input

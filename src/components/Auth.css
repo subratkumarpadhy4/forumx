@@ -3,85 +3,249 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 50%, #0f1729 100%);
   padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Enhanced animated background orbs */
+.container::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -250px;
+  right: -250px;
+  animation: pulse 6s ease-in-out infinite;
+  filter: blur(80px);
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -200px;
+  left: -200px;
+  animation: pulse 8s ease-in-out infinite reverse;
+  filter: blur(80px);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.9;
+  }
 }
 
 .auth-box {
-  background: white;
-  border-radius: 12px;
-  padding: 40px;
+  background: rgba(20, 20, 35, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 20px;
+  padding: 50px 45px;
   width: 100%;
-  max-width: 400px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 460px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(99, 102, 241, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 1;
 }
 
+/* ForumX Logo/Branding */
 .auth-box h2 {
-  margin: 0 0 30px 0;
-  font-size: 28px;
-  font-weight: 600;
-  color: #333;
+  margin: 0 0 12px 0;
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;
   text-align: center;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #6366f1 0%, #a78bfa 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.6));
+  }
+}
+.auth-logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Subtitle */
+.auth-subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  margin-bottom: 32px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .auth-box form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .auth-box input {
-  padding: 14px 16px;
+  padding: 16px 20px;
   font-size: 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  background: rgba(15, 15, 30, 0.7);
+  color: #ffffff;
+  border: 1.5px solid rgba(99, 102, 241, 0.25);
+  border-radius: 12px;
   outline: none;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
   font-family: inherit;
+  font-weight: 500;
+}
+
+.auth-box input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 400;
 }
 
 .auth-box input:focus {
-  border-color: #667eea;
+  border-color: #6366f1;
+  background: rgba(15, 15, 30, 0.9);
+  box-shadow: 
+    0 0 0 4px rgba(99, 102, 241, 0.15),
+    0 4px 12px rgba(99, 102, 241, 0.2);
+  transform: translateY(-1px);
 }
 
 .auth-box button {
-  padding: 14px;
+  padding: 17px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: white;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-top: 8px;
+  transition: all 0.3s ease;
+  margin-top: 12px;
+  box-shadow: 
+    0 6px 20px rgba(99, 102, 241, 0.4),
+    0 2px 8px rgba(99, 102, 241, 0.3);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-box button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.auth-box button:hover::before {
+  left: 100%;
 }
 
 .auth-box button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 10px 30px rgba(99, 102, 241, 0.5),
+    0 4px 15px rgba(99, 102, 241, 0.4);
+  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
 }
 
 .auth-box button:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
 }
 
 .switch-text {
-  margin-top: 24px;
+  margin-top: 32px;
   text-align: center;
-  color: #666;
+  color: rgba(255, 255, 255, 0.55);
   font-size: 14px;
+  font-weight: 500;
 }
 
 .switch-text span {
-  color: #667eea;
+  color: #6366f1;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: all 0.2s;
+  margin-left: 6px;
+  position: relative;
+}
+
+.switch-text span::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.3s ease;
+}
+
+.switch-text span:hover::after {
+  width: 100%;
 }
 
 .switch-text span:hover {
-  color: #764ba2;
-  text-decoration: underline;
+  color: #8b5cf6;
+}
+
+/* Decorative elements */
+.auth-box::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #6366f1, transparent);
+  filter: blur(1px);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-box {
+    padding: 40px 32px;
+  }
+  
+  .auth-box h2 {
+    font-size: 36px;
+  }
+  
+  .auth-subtitle {
+    font-size: 13px;
+  }
 }

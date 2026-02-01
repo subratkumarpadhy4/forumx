@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ForumX.css';
 
 const ForumX = () => {
   const navigate = useNavigate();
+  const [showJoinModal, setShowJoinModal] = useState(false);
+  const [joinCode, setJoinCode] = useState('');
+
+  // Generate a random room code
+  const generateRoomCode = () => {
+    return Math.floor(100 + Math.random() * 900).toString(); // Generates 3-digit code like 455
+  };
+
+  const handleCreateNewTable = () => {
+    const newRoomCode = generateRoomCode();
+    navigate(`/table/${newRoomCode}`);
+  };
+
+  const handleJoinTable = () => {
+    if (joinCode.trim()) {
+      // Navigate to the table with the join code
+      navigate(`/table/${joinCode}`);
+    } else {
+      alert('Please enter a valid table code');
+    }
+  };
+
   return (
     <div className="forum-x-container">
       {/* Subtle Background Elements */}
@@ -13,25 +35,13 @@ const ForumX = () => {
         {/* Header / Navigation */}
         <header className="header">
           <div className="header-left">
-            <div className="logo">
-              <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_6_543)">
-                  <path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_6_543">
-                    <rect fill="white" height="48" width="48"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
-            <h2 className="brand-name">ForumX</h2>
+            <img src="/logo.png" alt="ForumX" className="header-logo" />
           </div>
           <div className="header-right">
-            <button className="icon-button">
+            <button className="icon-button" onClick={() => alert('Help documentation coming soon!')}>
               <span className="material-symbols-outlined">help_outline</span>
             </button>
-            <button className="icon-button">
+            <button className="icon-button" onClick={() => alert('Settings page coming soon!')}>
               <span className="material-symbols-outlined">settings</span>
             </button>
           </div>
@@ -41,17 +51,17 @@ const ForumX = () => {
         <main className="main-content">
           <div className="hero-section">
             <h1 className="hero-title">
-              Welcome to the Table.
+              Start your next discussion
             </h1>
             <p className="hero-description">
-              Select your entry point to start a structured, distraction-free discussion session.
+             Create a room and bring your team in
             </p>
           </div>
 
           {/* Action Grid */}
           <div className="action-grid">
             {/* Join Table */}
-            <div className="glass-card">
+            <div className="glass-card" onClick={() => setShowJoinModal(true)}>
               <div className="card-icon">
                 <span className="material-symbols-outlined">radio_button_checked</span>
               </div>
@@ -66,14 +76,11 @@ const ForumX = () => {
               </div>
             </div>
 
-            {/* Create Table */}
-            <div className="glass-card primary-card" onClick={() => navigate('/table')}>
-              <div className="recommended-badge">
-                <span>Recommended</span>
-              </div>
+            {/* Create Table - FIXED: Now generates room code */}
+            <div className="glass-card primary-card" onClick={handleCreateNewTable}>
               <div className="card-icon primary-icon">
                 <span className="material-symbols-outlined">add_circle</span>
-              </div>
+              </div> 
               <h3 className="card-title">Create a New Table</h3>
               <p className="card-description">
                 Set up a new structured session, define your topics, and invite others.
@@ -102,21 +109,8 @@ const ForumX = () => {
             </div>
           </div>
 
-          {/* Visualization Hint */}
-          <div className="platform-overview">
-            <div className="section-divider">
-              <div className="divider-line"></div>
-              <span className="divider-text">Platform Overview</span>
-              <div className="divider-line"></div>
-            </div>
-            <div className="visualization-container">
-              <div className="visualization-content">
-                <div className="circle-outer"></div>
-                <div className="circle-middle"></div>
-                <div className="circle-center"></div>
-              </div>
-            </div>
-          </div>
+          
+         
         </main>
 
         {/* Footer */}
@@ -130,6 +124,32 @@ const ForumX = () => {
           <p className="footer-copyright">© 2024 ForumX Platform. Designed for deep discourse.</p>
         </footer>
       </div>
+
+      {/* Join Code Modal */}
+      {showJoinModal && (
+        <div className="modal-overlay" onClick={() => setShowJoinModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>Join an Existing Table</h3>
+            <p>Enter the table code to join the discussion</p>
+            <input
+              type="text"
+              placeholder="Enter table code"
+              value={joinCode}
+              onChange={(e) => setJoinCode(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleJoinTable()}
+              autoFocus
+            />
+            <div className="modal-actions">
+              <button onClick={() => setShowJoinModal(false)} className="modal-button secondary">
+                Cancel
+              </button>
+              <button onClick={handleJoinTable} className="modal-button primary">
+                Join Table
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
