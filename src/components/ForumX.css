@@ -398,9 +398,9 @@
 
 /* Header Logo */
 .header-logo {
-  width: 100px;
-  height: auto;
-  object-fit: contain;
+  width: 120px;
+  height: 48px;
+  object-fit: fill;
 }
 
 /* Modal Styles */
