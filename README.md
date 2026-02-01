@@ -47,6 +47,7 @@ npm install
 npm run dev
 ```
 ### Open link
+[Live Demo](https://ayyykayy.github.io/ForumX/)
 ## 5. AI Tools Used
 - ChatGPT (design, coding, documentation)
 - Claude (design assistance)
